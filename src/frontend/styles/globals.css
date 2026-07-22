@@ -1,0 +1,119 @@
+:root {
+  --color-bg: #f8f8f6;
+  --color-surface: #fbfbf8;
+  --color-text: #111111;
+  --color-text-secondary: #2d2d2d;
+  --color-text-muted: #5a5a57;
+  --color-border-soft: #e2e2dd;
+  --color-border-mid: #d9d9d4;
+  --color-border-strong: #161616;
+  --color-white: #ffffff;
+  --color-error: #9b1f1f;
+  --color-success: #245f34;
+
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 80px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+.serif-title {
+  font-family: var(--font-serif);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbcbc6;
+  background: var(--color-white);
+  font: inherit;
+  color: var(--color-text);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.overline {
+  margin: 0;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.btn-outline,
+.tab-btn,
+.inline-btn {
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.btn-outline:hover,
+.tab-btn:hover,
+.inline-btn:hover,
+.btn-outline:focus-visible,
+.tab-btn:focus-visible,
+.inline-btn:focus-visible {
+  background: var(--color-text);
+  color: var(--color-white);
+}
+
+.btn-outline:disabled,
+.tab-btn:disabled,
+.inline-btn:disabled {
+  border-color: #b8b8b3;
+  color: #8a8a88;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.feedback {
+  margin: 0;
+  font-size: 14px;
+}
+
+.feedback.error {
+  color: var(--color-error);
+}
+
+.feedback.note {
+  color: var(--color-text-muted);
+}
+
+.feedback.success {
+  color: var(--color-success);
+}

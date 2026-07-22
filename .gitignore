@@ -1,0 +1,69 @@
+# =========================
+# Betriebssystem / Explorer
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Editor / IDE
+# =========================
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+*.tmp
+
+# =========================
+# Logs
+# =========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Umgebungsdateien / Secrets
+# =========================
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!.env*.example
+!**/.env.example
+!**/.env*.example
+
+# =========================
+# Node / Next.js
+# =========================
+**/node_modules/
+**/.next/
+**/out/
+**/dist/
+**/.turbo/
+**/.cache/
+
+# =========================
+# .NET / C# Build-Artefakte
+# =========================
+**/[Bb]in/
+**/[Oo]bj/
+*.rsuser
+*.nupkg
+*.snupkg
+
+# =========================
+# Test / Coverage
+# =========================
+coverage/
+**/coverage/
+TestResults/
+
+# =========================
+# Local tooling
+# =========================
+.toolstarget
