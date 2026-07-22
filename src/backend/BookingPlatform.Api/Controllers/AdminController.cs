@@ -21,11 +21,13 @@ namespace BookingPlatform.Api.Controllers
         private const int SlotMinutes = 30;
         private readonly ApplicationDbContext _db;
         private readonly IAuditService _auditService;
+        private readonly IBookingService _bookingService;
 
-        public AdminController(ApplicationDbContext db, IAuditService auditService)
+        public AdminController(ApplicationDbContext db, IAuditService auditService, IBookingService bookingService)
         {
             _db = db;
             _auditService = auditService;
+            _bookingService = bookingService;
         }
 
         [HttpGet("employees")]
@@ -80,6 +82,29 @@ namespace BookingPlatform.Api.Controllers
                 .ToListAsync();
 
             return Ok(new { page, pageSize, total, items = appointments });
+        }
+
+        [HttpPost("appointments")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> CreateAppointment([FromBody] CreateBookingRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var companyId = GetCompanyId();
+
+            try
+            {
+                var result = await _bookingService.CreateBooking(companyId, request);
+                await _auditService.LogAsync(companyId, "Appointment", result.AppointmentId.ToString(), "CreateByAdmin", GetCurrentUserId(), "Appointment created from admin calendar.");
+                return Ok(result);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpGet("appointments/export-csv")]

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import AdminCalendarPanel from '../components/admin-calendar/AdminCalendarPanel';
 
 const API_URL = '';
 const ADMIN_SESSION_STORAGE_KEY = 'bookingPlatformAdminSession';
@@ -599,6 +600,7 @@ export default function AdminPage() {
         <>
           <div style={{ ...styles.card, ...styles.row }}>
             <button className={`tab-btn ${activeTab === 'appointments' ? 'active' : ''}`} onClick={() => setActiveTab('appointments')}>Termine</button>
+            <button className={`tab-btn ${activeTab === 'calendar' ? 'active' : ''}`} onClick={() => setActiveTab('calendar')}>Kalender</button>
             <button className={`tab-btn ${activeTab === 'services' ? 'active' : ''}`} onClick={() => setActiveTab('services')}>Leistungen</button>
             <button className={`tab-btn ${activeTab === 'hours' ? 'active' : ''}`} onClick={() => setActiveTab('hours')}>Öffnungszeiten</button>
             <button className={`tab-btn ${activeTab === 'exceptions' ? 'active' : ''}`} onClick={() => setActiveTab('exceptions')}>Ausnahmen</button>
@@ -704,6 +706,21 @@ export default function AdminPage() {
                 <span>Gesamt: {appointmentTotal}</span>
               </div>
             </section>
+          )}
+
+          {activeTab === 'calendar' && (
+            <AdminCalendarPanel
+              api={api}
+              services={services}
+              employees={employees}
+              hours={hours}
+              styles={styles}
+              onError={setError}
+              onNotice={setNotice}
+              onRefreshData={async () => {
+                await loadAll(token, appointmentPage, notificationPage, auditPage);
+              }}
+            />
           )}
 
           {activeTab === 'services' && (
