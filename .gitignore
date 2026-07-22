@@ -67,3 +67,6 @@ TestResults/
 # Local tooling
 # =========================
 .toolstarget
+.github/workflows/cd.yml
+.github/workflows/ci.yml
+.github/workflows/develop.yml
